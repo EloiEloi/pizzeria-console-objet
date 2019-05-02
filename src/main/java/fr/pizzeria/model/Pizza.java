@@ -6,13 +6,17 @@ package fr.pizzeria.model;
 /**
  * @author Eloi
  *
+ *         Représente une pizza
+ *
  */
 public class Pizza {
 
-	Integer id;
-	String code;
-	String libelle;
-	Double prix;
+	private Integer id;
+	private String code;
+	private String libelle;
+	private Double prix;
+
+	private static Integer idLast;
 
 	/**
 	 * Constructor
@@ -25,7 +29,8 @@ public class Pizza {
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
-		id++;
+		setIdLast(idLast++);
+		this.id = getIdLast();
 	}
 
 	/**
@@ -41,6 +46,7 @@ public class Pizza {
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		setIdLast(id);
 	}
 
 	/**
@@ -117,6 +123,25 @@ public class Pizza {
 	 */
 	public void setPrix(Double prix) {
 		this.prix = prix;
+	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the idLast
+	 */
+	public static Integer getIdLast() {
+		return idLast;
+	}
+
+	/**
+	 * Setter
+	 *
+	 * @param idLast
+	 *            the idLast to set
+	 */
+	public static void setIdLast(Integer idLast) {
+		Pizza.idLast = idLast;
 	}
 
 	@Override
