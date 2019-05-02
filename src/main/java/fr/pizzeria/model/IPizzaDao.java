@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * @author Eloi
  *
+ *         interface représentant toutes les méthodes des cas d'utilisation
  */
 public interface IPizzaDao {
 

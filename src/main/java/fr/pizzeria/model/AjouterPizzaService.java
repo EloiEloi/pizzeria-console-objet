@@ -1,18 +1,17 @@
-/**
- * 
- */
 package fr.pizzeria.model;
 
 import java.util.Scanner;
 
 /**
  * @author Eloi
+ * 
+ *         class représentant le cas utilisation : 2 , ajout d'une pizza
  *
  */
 public class AjouterPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner scanner, PizzaMemDao dao) {
+	public void executeUC(Scanner scanner, IPizzaDao dao) {
 
 		String valeur = "";
 

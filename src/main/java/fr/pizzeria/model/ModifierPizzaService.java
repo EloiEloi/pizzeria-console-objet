@@ -8,11 +8,13 @@ import java.util.Scanner;
 /**
  * @author Eloi
  *
+ *         class représentant le cas utilisation : 3 , modifier une pizza
+ *
  */
 public class ModifierPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner scanner, PizzaMemDao dao) {
+	public void executeUC(Scanner scanner, IPizzaDao dao) {
 
 		String valeur = "";
 

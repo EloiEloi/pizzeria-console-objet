@@ -3,6 +3,7 @@ package fr.diginamic.console;
 import java.util.Scanner;
 
 import fr.pizzeria.model.AjouterPizzaService;
+import fr.pizzeria.model.IPizzaDao;
 import fr.pizzeria.model.ListerPizzasService;
 import fr.pizzeria.model.MenuService;
 import fr.pizzeria.model.ModifierPizzaService;
@@ -25,14 +26,16 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args) {
 
 		// creation / initianilisation de la liste de pizza
-		PizzaMemDao dao = new PizzaMemDao();
+		IPizzaDao dao = new PizzaMemDao();
 
 		// creation / initialisation d'un scanner
 		Scanner scanner = new Scanner(System.in);
+		// création / initialisation d'une variable pour réucupérer la furtur entrée utilisateur
 		String valeur = "";
 
 		while (!valeur.equals("99")) {
 
+			// affichage du menu
 			System.out.println("***** Pizzeria Administration *****");
 			System.out.println("1. Lister les pizzas");
 			System.out.println("2. Ajouter une nouvelle");
@@ -40,42 +43,44 @@ public class PizzeriaAdminConsoleApp {
 			System.out.println("4. Supprimer une pizza");
 			System.out.println("99. Sortir");
 
-			/* récupération de la saisie de l'utilisateur */
+			// récupération de la saisie de l'utilisateur
 			valeur = scanner.nextLine();
 
 			if (valeur.equals("1")) {
 
+				// création d'une instance de ListerPizzasService
 				MenuService service = new ListerPizzasService();
-				// on affiche la liste des pizzas
+				// on appelle la methode pour afficher la liste des pizzas
 				service.executeUC(scanner, dao);
 
 			} else if (valeur.equals("2")) {
 
-				// création d'une nouvelle instance de Pizza que l'on ajoute
-				// dans le tableau arrayPizza
+				// création d'une instance de ListerPizzasService
 				MenuService service = new AjouterPizzaService();
+				// on appelle la méthode pour ajouter la pizza
 				service.executeUC(scanner, dao);
 
 			} else if (valeur.equals("3")) {
 
-				// on modifie les arguments de l'instance de Pizza choisie par
-				// l'utilisateur avec les valeurs saisies par l'utilisateur
-
+				// création d'une instance de ModifierPizzaService
 				MenuService service = new ModifierPizzaService();
+				// on appelle la méthode pour modifier la pizza
 				service.executeUC(scanner, dao);
 
 			} else if (valeur.equals("4")) {
 
+				// création d'une instance de ListerPizzasService
 				MenuService service = new ListerPizzasService();
-
-				// on affiche la liste des pizzas
+				// on appelle la methode pour afficher la liste des pizzas
 				service.executeUC(scanner, dao);
 
-				// on supprime la pizza selectionnée par l'utiilisateur
+				// on passe l'object SupprimerPizzaService à l'instance
 				service = new SupprimerPizzaService();
+				// on appelle la methode pour afficher supprimer uen pizza
 				service.executeUC(scanner, dao);
 
 			} else if (valeur.equals("99")) {
+				// on affiche un texte pour indiquer la fin du programme
 				System.out.println("Aurevoir ☹");
 			}
 
