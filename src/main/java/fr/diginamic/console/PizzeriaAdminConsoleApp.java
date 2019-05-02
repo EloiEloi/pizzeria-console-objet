@@ -48,11 +48,10 @@ public class PizzeriaAdminConsoleApp {
 				// l'objet Pizza dans une phrase "lisible" pour l'utilisateur
 				StringBuilder message = new StringBuilder();
 
+				// on affiche la liste des pizzas
 				for (int i = 0; i < arrayPizza.size(); i++) {
-					message.append(arrayPizza.get(i).getCode()).append(" -> ").append(arrayPizza.get(i).getLibelle())
-							.append(" (").append(arrayPizza.get(i).getPrix()).append(" €)\n");
+					System.out.println(arrayPizza.get(i).toString());
 				}
-				System.out.println(message); // on affiche la liste des pizzas
 
 			} else if (valeur.equals("2")) {// if effectué lorsque l'utilisateur
 											// entre la valeur 2
@@ -78,15 +77,10 @@ public class PizzeriaAdminConsoleApp {
 
 				System.out.println("----- Liste des pizzas -----");
 
-				// création d'un StringBuilder pour concatener les arguments de
-				// l'objet Pizza dans une phrase "lisible" pour l'utilisateur
-				StringBuilder message = new StringBuilder();
-
+				// on affiche la liste des pizzas
 				for (int i = 0; i < arrayPizza.size(); i++) {
-					message.append(arrayPizza.get(i).getCode()).append(" -> ").append(arrayPizza.get(i).getLibelle())
-							.append(" (").append(arrayPizza.get(i).getPrix()).append(" €)\n");
+					System.out.println(arrayPizza.get(i).toString());
 				}
-				System.out.println(message); // on affiche la liste des pizzas
 
 				System.out.println("Veuillez choisir le code de la pizza à modifier");
 				valeur = scanner.nextLine();
@@ -117,15 +111,10 @@ public class PizzeriaAdminConsoleApp {
 			} else if (valeur.equals("4")) {// if effectué lorsque l'utilisateur
 											// entre la valeur 4
 
-				// création d'un StringBuilder pour concatener les arguments de
-				// l'objet Pizza dans une phrase "lisible" pour l'utilisateur
-				StringBuilder message = new StringBuilder();
-
+				// on affiche la liste des pizzas
 				for (int i = 0; i < arrayPizza.size(); i++) {
-					message.append(arrayPizza.get(i).getCode()).append(" -> ").append(arrayPizza.get(i).getLibelle())
-							.append(" (").append(arrayPizza.get(i).getPrix()).append(" €)\n");
+					System.out.println(arrayPizza.get(i).toString());
 				}
-				System.out.println(message); // on affiche la liste des pizzas
 
 				System.out.println("Veuillez choisir le code de la pizza à supprimer :");
 				valeur = scanner.nextLine();

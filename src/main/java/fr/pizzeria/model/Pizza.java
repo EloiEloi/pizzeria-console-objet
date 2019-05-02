@@ -187,4 +187,16 @@ public class Pizza {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(code);
+		builder.append(" -> ");
+		builder.append(libelle);
+		builder.append(" (");
+		builder.append(prix);
+		builder.append(") ");
+		return builder.toString();
+	}
+
 }
