@@ -11,6 +11,6 @@ import java.util.Scanner;
  */
 public abstract class MenuService {
 
-	abstract void executeUC(Scanner scanner);
+	public abstract void executeUC(Scanner scanner, PizzaMemDao dao);
 
 }
