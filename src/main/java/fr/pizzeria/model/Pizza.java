@@ -16,7 +16,7 @@ public class Pizza {
 	private String libelle;
 	private Double prix;
 
-	private static Integer idLast;
+	private static Integer idLast = 0;
 
 	/**
 	 * Constructor
@@ -26,11 +26,12 @@ public class Pizza {
 	 * @param prix
 	 */
 	public Pizza(String code, String libelle, Double prix) {
+		this.id = idLast;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
-		setIdLast(idLast++);
-		this.id = getIdLast();
+		idLast++;
+
 	}
 
 	/**
@@ -46,7 +47,7 @@ public class Pizza {
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
-		setIdLast(id);
+		idLast = id++;
 	}
 
 	/**
@@ -123,25 +124,6 @@ public class Pizza {
 	 */
 	public void setPrix(Double prix) {
 		this.prix = prix;
-	}
-
-	/**
-	 * Getter
-	 * 
-	 * @return the idLast
-	 */
-	public static Integer getIdLast() {
-		return idLast;
-	}
-
-	/**
-	 * Setter
-	 *
-	 * @param idLast
-	 *            the idLast to set
-	 */
-	public static void setIdLast(Integer idLast) {
-		Pizza.idLast = idLast;
 	}
 
 	@Override

@@ -1,9 +1,10 @@
 package fr.diginamic.console;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.model.PizzaMemDao;
 
 /**
  * @author Eloi
@@ -12,22 +13,20 @@ import fr.pizzeria.model.Pizza;
 public class PizzeriaAdminConsoleApp {
 
 	/**
+	 * 
+	 * Methode point d'entrée d'execution de la pizzaria
+	 * 
 	 * @param args
+	 *            non utilisé dans cette application
 	 */
 	public static void main(String[] args) {
 
-		ArrayList<Pizza> arrayPizza = new ArrayList<>();
-		arrayPizza.add(new Pizza(1, "PEP", "Pépéroni", 12.50));
-		arrayPizza.add(new Pizza(2, "MAR", "Margherita", 12.50));
-		arrayPizza.add(new Pizza(3, "REIN", "La Reine", 12.50));
-		arrayPizza.add(new Pizza(4, "FRO", "La 4 fromages", 12.50));
-		arrayPizza.add(new Pizza(5, "CAN", "La cannibale", 12.50));
-		arrayPizza.add(new Pizza(6, "SAV", "La savoyarde", 12.50));
-		arrayPizza.add(new Pizza(7, "ORI", "L’orientale", 12.50));
-		arrayPizza.add(new Pizza(8, "IND", "L’indienne", 12.50));
+		// creation / initianilisation de la liste de pizza
+		PizzaMemDao dao = new PizzaMemDao();
 
-		String valeur = "";
+		// creation / initialisation d'un scanner
 		Scanner scanner = new Scanner(System.in);
+		String valeur = "";
 
 		while (!valeur.equals("99")) {
 
@@ -42,15 +41,12 @@ public class PizzeriaAdminConsoleApp {
 
 			if (valeur.equals("1")) {// if effectué lorsque l'utilisateur entre
 										// la valeur 1
-				System.out.println("----- Liste des pizzas -----");
-
-				// création d'un StringBuilder pour concatener les arguments de
-				// l'objet Pizza dans une phrase "lisible" pour l'utilisateur
-				StringBuilder message = new StringBuilder();
 
 				// on affiche la liste des pizzas
-				for (int i = 0; i < arrayPizza.size(); i++) {
-					System.out.println(arrayPizza.get(i).toString());
+				List<Pizza> listTemp = dao.findAllPizzas();
+				for (int i = 0; i < listTemp.size(); i++) {
+					System.out.println(listTemp.get(i).toString());
+
 				}
 
 			} else if (valeur.equals("2")) {// if effectué lorsque l'utilisateur
@@ -70,17 +66,13 @@ public class PizzeriaAdminConsoleApp {
 
 				// création d'une nouvelle instance de Pizza que l'on ajoute
 				// dans le tableau arrayPizza
-				arrayPizza.add(new Pizza(monCode, monLibelle, monPrix));
+
+				dao.saveNewPizza(new Pizza(monCode, monLibelle, monPrix));
 
 			} else if (valeur.equals("3")) {// if effectué lorsque l'utilisateur
 											// entre la valeur 3
 
 				System.out.println("----- Liste des pizzas -----");
-
-				// on affiche la liste des pizzas
-				for (int i = 0; i < arrayPizza.size(); i++) {
-					System.out.println(arrayPizza.get(i).toString());
-				}
 
 				System.out.println("Veuillez choisir le code de la pizza à modifier");
 				valeur = scanner.nextLine();
@@ -98,22 +90,20 @@ public class PizzeriaAdminConsoleApp {
 				valeur = scanner.nextLine();
 				Double monPrix = Double.parseDouble(valeur);
 
+				Pizza pizzaTemp = new Pizza(monCode, monLibelle, monPrix);
+
 				// on modifie les arguments de l'instance de Pizza choisie par
 				// l'utilisateur avec les valeurs saisies par l'utilisateur
-				for (int i = 0; i < arrayPizza.size(); i++) {
-					if (arrayPizza.get(i).getCode().equals(monCodePizzaAModifier)) {
-						arrayPizza.get(i).setCode(monCode);
-						arrayPizza.get(i).setLibelle(monLibelle);
-						arrayPizza.get(i).setPrix(monPrix);
-					}
-				}
+				dao.updatePizza(monCodePizzaAModifier, pizzaTemp);
 
 			} else if (valeur.equals("4")) {// if effectué lorsque l'utilisateur
 											// entre la valeur 4
 
 				// on affiche la liste des pizzas
-				for (int i = 0; i < arrayPizza.size(); i++) {
-					System.out.println(arrayPizza.get(i).toString());
+				List<Pizza> listTemp = dao.findAllPizzas();
+				for (int i = 0; i < listTemp.size(); i++) {
+					System.out.println(listTemp.get(i).toString());
+
 				}
 
 				System.out.println("Veuillez choisir le code de la pizza à supprimer :");
@@ -121,19 +111,7 @@ public class PizzeriaAdminConsoleApp {
 				String monCodePizzaASupprimer = valeur;
 
 				// on supprime la pizza selectionnée par l'utiilisateur
-				for (int i = 0; i < arrayPizza.size(); i++) {
-					if (arrayPizza.get(i).getCode().equals(monCodePizzaASupprimer)) {
-						arrayPizza.remove(arrayPizza.get(i)); // suppression
-																// de
-																// l'instance
-																// de la
-																// Pizza
-																// selectionnée
-																// dans
-																// le
-																// tableau
-					}
-				}
+				dao.deletePizza(monCodePizzaASupprimer);
 
 			} else if (valeur.equals("99")) {// if effectué lorsque
 												// l'utilisateur entre la valeur
