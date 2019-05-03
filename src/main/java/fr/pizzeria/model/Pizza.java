@@ -11,9 +11,13 @@ package fr.pizzeria.model;
  */
 public class Pizza {
 
+	/** id : Integer */
 	private Integer id;
+	/** code : String */
 	private String code;
+	/** libelle : String */
 	private String libelle;
+	/** prix : Double */
 	private Double prix;
 
 	private static Integer idLast = 0;

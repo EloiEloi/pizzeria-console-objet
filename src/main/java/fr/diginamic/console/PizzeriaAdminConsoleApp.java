@@ -2,6 +2,7 @@ package fr.diginamic.console;
 
 import java.util.Scanner;
 
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.AjouterPizzaService;
 import fr.pizzeria.model.IPizzaDao;
 import fr.pizzeria.model.ListerPizzasService;
@@ -50,34 +51,60 @@ public class PizzeriaAdminConsoleApp {
 
 				// création d'une instance de ListerPizzasService
 				MenuService service = new ListerPizzasService();
-				// on appelle la methode pour afficher la liste des pizzas
-				service.executeUC(scanner, dao);
+
+				try {
+					// on appelle la methode pour afficher la liste des pizzas
+					service.executeUC(scanner, dao);
+				} catch (StockageException e) {
+					System.out.println(e.getMessage());
+				}
 
 			} else if (valeur.equals("2")) {
 
-				// création d'une instance de ListerPizzasService
+				// création d'une instance de AjouterPizzaService
 				MenuService service = new AjouterPizzaService();
 				// on appelle la méthode pour ajouter la pizza
-				service.executeUC(scanner, dao);
+
+				try {
+					// on appelle la méthode pour modifier la pizza
+					service.executeUC(scanner, dao);
+				} catch (StockageException e) {
+					System.out.println(e.getMessage());
+				}
 
 			} else if (valeur.equals("3")) {
 
 				// création d'une instance de ModifierPizzaService
 				MenuService service = new ModifierPizzaService();
-				// on appelle la méthode pour modifier la pizza
-				service.executeUC(scanner, dao);
+
+				try {
+					// on appelle la méthode pour modifier la pizza
+					service.executeUC(scanner, dao);
+				} catch (StockageException e) {
+					System.out.println(e.getMessage());
+				}
 
 			} else if (valeur.equals("4")) {
 
 				// création d'une instance de ListerPizzasService
 				MenuService service = new ListerPizzasService();
-				// on appelle la methode pour afficher la liste des pizzas
-				service.executeUC(scanner, dao);
+
+				try {
+					// on appelle la methode pour afficher la liste des pizzas
+					service.executeUC(scanner, dao);
+				} catch (StockageException e) {
+					System.out.println(e.getMessage());
+				}
 
 				// on passe l'object SupprimerPizzaService à l'instance
 				service = new SupprimerPizzaService();
-				// on appelle la methode pour afficher supprimer uen pizza
-				service.executeUC(scanner, dao);
+
+				try {
+					// on appelle la methode pour afficher supprimer uen pizza
+					service.executeUC(scanner, dao);
+				} catch (StockageException e) {
+					System.out.println(e.getMessage());
+				}
 
 			} else if (valeur.equals("99")) {
 				// on affiche un texte pour indiquer la fin du programme
