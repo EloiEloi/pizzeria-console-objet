@@ -28,7 +28,6 @@ public enum CategoriePizza {
 			}
 		}
 		return null;
-
 	}
 
 	/**
