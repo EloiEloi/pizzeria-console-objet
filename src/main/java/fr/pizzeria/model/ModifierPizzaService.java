@@ -21,6 +21,7 @@ public class ModifierPizzaService extends MenuService {
 	public void executeUC(Scanner scanner, IPizzaDao dao) throws UpdatePizzaException {
 
 		String valeur = "";
+		CategoriePizza catPizza = null;
 
 		System.out.println("----- Liste des pizzas -----");
 
@@ -36,6 +37,16 @@ public class ModifierPizzaService extends MenuService {
 		valeur = scanner.nextLine();// assigne la saisie utilisateur à la variable "valeur"
 		String monLibelle = valeur;
 
+		while (catPizza == null) {
+			System.out.println("Veuillez choisir une nouvelle catégorie :");
+			System.out.println("1 : viande");
+			System.out.println("2 : poisson");
+			System.out.println("3 : sans viande");
+
+			valeur = scanner.nextLine();
+			catPizza = CategoriePizza.trouverCategorie(valeur);
+		}
+
 		System.out.println("Veuillez saisir le nouveau prix :");
 		valeur = scanner.nextLine(); // assigne la saisie utilisateur à la variable "valeur"
 		Double monPrix = null;
@@ -46,8 +57,6 @@ public class ModifierPizzaService extends MenuService {
 		} else {
 			monPrix = null;
 		}
-
-		String monPrixEnString = valeur;
 
 		if (monCodePizzaAModifier.equals("")) {
 			throw new UpdatePizzaException("le code pizza n'est pas correct");
@@ -61,11 +70,11 @@ public class ModifierPizzaService extends MenuService {
 		} else if (monPrix.equals("0")) {
 			throw new UpdatePizzaException("Le nouveau prix ne peut pas valoir : 0 ");
 
-		} else if (monPrix == null) {
+		} else if (monPrix.equals(null)) {
 			throw new UpdatePizzaException("Le nouveau prix ne peut pas être vide ");
 
 		} else {
-			Pizza pizzaTemp = new Pizza(monCode, monLibelle, monPrix);
+			Pizza pizzaTemp = new Pizza(monCode, monLibelle, monPrix, catPizza);
 			dao.updatePizza(monCodePizzaAModifier, pizzaTemp);
 
 		}

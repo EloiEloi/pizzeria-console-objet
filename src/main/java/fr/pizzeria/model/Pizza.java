@@ -22,6 +22,8 @@ public class Pizza {
 
 	private static Integer idLast = 0;
 
+	private CategoriePizza catPizza;
+
 	/**
 	 * Constructor
 	 * 
@@ -29,11 +31,12 @@ public class Pizza {
 	 * @param libelle
 	 * @param prix
 	 */
-	public Pizza(String code, String libelle, Double prix) {
+	public Pizza(String code, String libelle, Double prix, CategoriePizza catPizza) {
 		this.id = idLast;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.catPizza = catPizza;
 		idLast++;
 
 	}
@@ -46,11 +49,12 @@ public class Pizza {
 	 * @param libelle
 	 * @param prix
 	 */
-	public Pizza(Integer id, String code, String libelle, Double prix) {
+	public Pizza(Integer id, String code, String libelle, Double prix, CategoriePizza catPizza) {
 		this.id = id;
 		this.code = code;
 		this.libelle = libelle;
 		this.prix = prix;
+		this.catPizza = catPizza;
 		idLast = id++;
 	}
 
@@ -179,9 +183,12 @@ public class Pizza {
 		builder.append(code);
 		builder.append(" -> ");
 		builder.append(libelle);
-		builder.append(" (");
+		builder.append(" |");
+		builder.append(catPizza);
+		builder.append("| ");
+		builder.append(" prix : ");
 		builder.append(prix);
-		builder.append(") ");
+		builder.append(" €");
 		return builder.toString();
 	}
 

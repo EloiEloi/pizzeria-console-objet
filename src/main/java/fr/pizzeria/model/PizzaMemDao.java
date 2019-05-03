@@ -22,14 +22,14 @@ public class PizzaMemDao implements IPizzaDao {
 	 */
 	public PizzaMemDao() {
 		arrayPizza = new ArrayList<>();
-		arrayPizza.add(new Pizza(0, "PEP", "Pépéroni", 12.50));
-		arrayPizza.add(new Pizza(1, "MAR", "Margherita", 12.50));
-		arrayPizza.add(new Pizza(2, "REIN", "La Reine", 12.50));
-		arrayPizza.add(new Pizza(3, "FRO", "La 4 fromages", 12.50));
-		arrayPizza.add(new Pizza(4, "CAN", "La cannibale", 12.50));
-		arrayPizza.add(new Pizza(5, "SAV", "La savoyarde", 12.50));
-		arrayPizza.add(new Pizza(6, "ORI", "L’orientale", 12.50));
-		arrayPizza.add(new Pizza(7, "IND", "L’indienne", 12.50));
+		arrayPizza.add(new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
+		arrayPizza.add(new Pizza(1, "MAR", "Margherita", 12.50, CategoriePizza.SANS_VIANDE));
+		arrayPizza.add(new Pizza(2, "REIN", "La Reine", 12.50, CategoriePizza.VIANDE));
+		arrayPizza.add(new Pizza(3, "FRO", "La 4 fromages", 12.50, CategoriePizza.SANS_VIANDE));
+		arrayPizza.add(new Pizza(4, "CAN", "La cannibale", 12.50, CategoriePizza.VIANDE));
+		arrayPizza.add(new Pizza(5, "SAV", "La savoyarde", 12.50, CategoriePizza.VIANDE));
+		arrayPizza.add(new Pizza(6, "ORI", "L’orientale", 12.50, CategoriePizza.VIANDE));
+		arrayPizza.add(new Pizza(7, "IND", "L’indienne", 12.50, CategoriePizza.POISSON));
 	}
 
 	@Override
