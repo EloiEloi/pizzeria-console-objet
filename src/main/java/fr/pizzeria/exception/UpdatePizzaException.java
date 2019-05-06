@@ -9,6 +9,7 @@ package fr.pizzeria.exception;
  *         class gerant les exceptions concernant la modification des pizzas dans la Classe ModifierPizzaService
  */
 public class UpdatePizzaException extends StockageException {
+
 	/**
 	 * Constructor
 	 * 

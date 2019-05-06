@@ -34,7 +34,7 @@ public class SupprimerPizzaService extends MenuService {
 		if (valeur.equals("")) {
 			throw new DeletePizzaException("le code pizza n'est pas correct");
 		} else {
-			dao.deletePizza(scanner.nextLine());
+			dao.deletePizza(valeur);
 			LOG.info("suppression de la pizza | code : " + valeur);
 		}
 

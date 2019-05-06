@@ -2,6 +2,9 @@ package fr.diginamic.console;
 
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.AjouterPizzaService;
 import fr.pizzeria.model.IPizzaDao;
@@ -17,6 +20,8 @@ import fr.pizzeria.model.SupprimerPizzaService;
  */
 public class PizzeriaAdminConsoleApp {
 
+	private static final Logger LOG = LoggerFactory.getLogger(AjouterPizzaService.class);
+
 	/**
 	 * 
 	 * Methode point d'entrée d'execution de la pizzaria
@@ -26,6 +31,7 @@ public class PizzeriaAdminConsoleApp {
 	 */
 	public static void main(String[] args) {
 
+		LOG.info("Démarrage de l'application");
 		// creation / initianilisation de la liste de pizza
 		IPizzaDao dao = new PizzaMemDao();
 
@@ -109,6 +115,7 @@ public class PizzeriaAdminConsoleApp {
 			} else if (valeur.equals("99")) {
 				// on affiche un texte pour indiquer la fin du programme
 				System.out.println("Aurevoir ☹");
+				LOG.info("FIN de l'application");
 			}
 
 		}
