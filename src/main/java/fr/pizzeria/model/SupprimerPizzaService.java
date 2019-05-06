@@ -5,6 +5,9 @@ package fr.pizzeria.model;
 
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.pizzeria.exception.DeletePizzaException;
 
 /**
@@ -14,6 +17,8 @@ import fr.pizzeria.exception.DeletePizzaException;
  *
  */
 public class SupprimerPizzaService extends MenuService {
+
+	private static final Logger LOG = LoggerFactory.getLogger(AjouterPizzaService.class);
 
 	@Override
 	public void executeUC(Scanner scanner, IPizzaDao dao) throws DeletePizzaException {
@@ -30,6 +35,7 @@ public class SupprimerPizzaService extends MenuService {
 			throw new DeletePizzaException("le code pizza n'est pas correct");
 		} else {
 			dao.deletePizza(scanner.nextLine());
+			LOG.info("suppression de la pizza | code : " + valeur);
 		}
 
 	}

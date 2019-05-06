@@ -3,6 +3,8 @@ package fr.pizzeria.model;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.math.NumberUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import fr.pizzeria.exception.SavePizzaException;
 
@@ -13,6 +15,13 @@ import fr.pizzeria.exception.SavePizzaException;
  *
  */
 public class AjouterPizzaService extends MenuService {
+
+	/**
+	 * LOG : création de log de trace
+	 * 
+	 */
+
+	private static final Logger LOG = LoggerFactory.getLogger(AjouterPizzaService.class);
 
 	@Override
 	public void executeUC(Scanner scanner, IPizzaDao dao) throws SavePizzaException {
@@ -67,6 +76,10 @@ public class AjouterPizzaService extends MenuService {
 
 		} else {
 			dao.saveNewPizza(new Pizza(monCode, monLibelle, monPrix, catPizza));
+
+			// trace
+			LOG.info("ajout d'une pizza | code : " + monCode + ", libelle : " + monLibelle + ", catérogie : " + catPizza
+					+ ", prix : " + monPrix);
 		}
 		// Fin des exceptions
 

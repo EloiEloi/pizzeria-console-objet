@@ -3,6 +3,9 @@ package fr.pizzeria.model;
 import java.util.List;
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author Eloi
  * 
@@ -10,6 +13,8 @@ import java.util.Scanner;
  *
  */
 public class ListerPizzasService extends MenuService {
+
+	private static final Logger LOG = LoggerFactory.getLogger(AjouterPizzaService.class);
 
 	@Override
 	public void executeUC(Scanner scanner, IPizzaDao dao) {
@@ -21,6 +26,8 @@ public class ListerPizzasService extends MenuService {
 
 		}
 
+		// trace
+		LOG.info("listage des pizzas");
 	}
 
 }

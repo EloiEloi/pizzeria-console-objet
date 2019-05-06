@@ -6,6 +6,8 @@ package fr.pizzeria.model;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.math.NumberUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import fr.pizzeria.exception.UpdatePizzaException;
 
@@ -16,6 +18,8 @@ import fr.pizzeria.exception.UpdatePizzaException;
  *
  */
 public class ModifierPizzaService extends MenuService {
+
+	private static final Logger LOG = LoggerFactory.getLogger(AjouterPizzaService.class);
 
 	@Override
 	public void executeUC(Scanner scanner, IPizzaDao dao) throws UpdatePizzaException {
@@ -76,6 +80,10 @@ public class ModifierPizzaService extends MenuService {
 		} else {
 			Pizza pizzaTemp = new Pizza(monCode, monLibelle, monPrix, catPizza);
 			dao.updatePizza(monCodePizzaAModifier, pizzaTemp);
+
+			// trace
+			LOG.info("modification d'une pizza | code : " + monCode + ", libelle : " + monLibelle + ", catérogie : "
+					+ catPizza + ", prix : " + monPrix);
 
 		}
 
